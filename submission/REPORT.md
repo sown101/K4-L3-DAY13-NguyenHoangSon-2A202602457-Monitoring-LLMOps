@@ -8,7 +8,7 @@
 - **MSSV:** 2A202602457
 - **Lớp:** K4-L3A
 - **Repository URL:** https://github.com/sown101/K4-L3-DAY13-NguyenHoangSon-2A202602457-Monitoring-LLMOps
-- **Commit SHA cuối:** Chưa có trước khi commit; xác nhận SHA của commit nộp và cung cấp trên LMS/Codelabs sau khi chốt commit.
+- **Commit SHA cuối:** 0ed3ca4932b563218307748286106e321cd947c9
 - **Challenge ID:** `day13-k4-l3a-monitoring-llmops-v1` (cohort K4)
 - **Tên project Langfuse cá nhân:** `day13-k4-l3a-2A202602457`
 
