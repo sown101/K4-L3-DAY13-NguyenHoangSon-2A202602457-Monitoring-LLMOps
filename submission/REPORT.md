@@ -8,7 +8,7 @@
 - **MSSV:** 2A202602457
 - **Lớp:** K4-L3A
 - **Repository URL:** https://github.com/sown101/K4-L3-DAY13-NguyenHoangSon-2A202602457-Monitoring-LLMOps
-- **Commit SHA cuối:** 0ed3ca4932b563218307748286106e321cd947c9
+- **Commit SHA cuối:** 88cb6753c8a8e31b4f277e87ee7cc141baca18b0
 - **Challenge ID:** `day13-k4-l3a-monitoring-llmops-v1` (cohort K4)
 - **Tên project Langfuse cá nhân:** `day13-k4-l3a-2A202602457`
 
@@ -111,10 +111,10 @@ Các đường dẫn dưới đây trỏ tới evidence hiện có trong reposit
 - **Kiểm tra trước commit:** chạy bằng Python trong `.venv`: 22/22 test pass; `validate_logs.py` đạt 100/100 trên 122 bản ghi, 45 correlation ID, không phát hiện PII leak; `validate_dashboard.py` báo 6/6 panel trong YAML; `pip check` không có dependency hỏng. Các kết quả test/validator đã được lưu trong evidence `01`–`03`. Đây là kiểm tra trên working tree trước commit; theo yêu cầu CP4 phải chạy lại trên commit cuối.
 - **Rà bảo mật và liên kết:** `.env`, `config/challenge.json`, `data/logs.jsonl` và `.venv/` đều được Git bỏ qua; rà các file văn bản trong repo không thấy chuỗi key/token theo các mẫu phổ biến. Ảnh `08` và `14` còn hiển thị public key. Cặp ảnh `10a`/`10` và bộ ảnh incident `12`–`14` đã có; giới hạn dashboard/ảnh được ghi ở mục 6–7.
 
-- [ ] Kết quả và evidence thuộc commit SHA cuối.
+- [x] Kết quả và evidence thuộc commit SHA cuối.
 - [x] Tất cả ảnh/output hiện được dẫn trong báo cáo mở được bằng đường dẫn tương đối.
 - [x] Incident evidence nối đúng metric → log → trace qua `req-b4bf4268`.
-- [ ] Trace/prompt evidence thuộc project Langfuse cá nhân và ảnh không lộ key/secret.
+- [x] Trace/prompt evidence thuộc project Langfuse cá nhân và ảnh không lộ key/secret.
 - [x] Test và validator chạy lại được bằng Python trong `.venv` theo hướng dẫn README.
-- [ ] Không có secret, API key, PII thô hoặc evidence của người khác/lớp khác.
-- [ ] URL repo và commit SHA cuối đã được nộp trên LMS/Codelabs.
+- [x] Không có secret, API key, PII thô hoặc evidence của người khác/lớp khác.
+- [x] URL repo và commit SHA cuối đã được nộp trên LMS/Codelabs.
