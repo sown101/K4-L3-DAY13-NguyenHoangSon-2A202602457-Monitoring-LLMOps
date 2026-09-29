@@ -27,6 +27,13 @@ class RecordingLangfuseClient:
     def update_current_span(self, **kwargs) -> None:
         self.span_updates.append(kwargs)
 
+    @contextmanager
+    def start_as_current_observation(self, **kwargs):
+        yield self
+
+    def update(self, **kwargs) -> None:
+        pass
+
 
 def test_agent_records_prompt_version_with_v4_observation_api(monkeypatch) -> None:
     monkeypatch.setenv("LANGFUSE_PROMPT_NAME", "day13-chat")

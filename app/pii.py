@@ -4,11 +4,21 @@ import hashlib
 import re
 
 PII_PATTERNS: dict[str, str] = {
-    "email": r"[\w\.-]+@[\w\.-]+\.\w+",
+    "email": r"[\w.+-]+@[\w.-]+\.\w{2,}",
     "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
     "cccd": r"\b\d{12}\b",
     "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
-    # TODO: Add more patterns (e.g., Passport, Vietnamese address keywords)
+    "passport": (
+        r"(?<![A-Za-z0-9])"
+        r"(?:(?i:(?:hộ\s*chiếu|ho\s*chieu|passport)\s*"
+        r"(?:số|so|no\.?|number)?\s*[:：#]?\s*))?"
+        r"[A-Z]{1,2}\d{7,8}(?![A-Za-z0-9])"
+    ),
+    # Chỉ che địa chỉ khi có nhãn rõ ràng; không che mọi lần xuất hiện của "đường".
+    "address_vn": (
+        r"(?i)\b(?:địa\s*chỉ|dia\s*chi|address|số\s*nhà|so\s*nha)"
+        r"\s*[:：]?\s*[^;\n]{4,120}"
+    ),
 }
 
 

@@ -7,7 +7,11 @@ primary_slo:
     total_event: 'event == "request_received"'
   target_percent: 99.5
   error_budget_percent: 0.5
-  note: Học viên phải giải thích hoặc điều chỉnh ngưỡng bằng baseline của mình.
+  note: >-
+    Giữ ngưỡng 3000 ms vì mẫu log CP2 có P95 1431.3 ms và TTFT P95 50 ms
+    trong cửa sổ 60 phút. Mẫu 28 request còn nhỏ; đây là mục tiêu vận hành,
+    chưa phải chứng minh độ tin cậy 28 ngày. Budget = 0.5% tổng requests
+    (5 request lỗi/chậm trên 1000 request).
 guardrails:
   error_rate_pct_max: 2
   daily_cost_usd_max: 2.5

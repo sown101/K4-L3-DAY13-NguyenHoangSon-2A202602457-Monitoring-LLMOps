@@ -1,0 +1,43 @@
+CP0 baseline — 2026-09-29
+Repository: K4-L3-DAY13-NguyenHoangSon-2A202602457-Monitoring-LLMOps
+
+Environment
+  Python 3.13.1
+  pip check: No broken requirements found.
+  GET /health: ok=True; tracing_enabled=True
+
+Workload
+  Command: .\.venv\Scripts\python.exe -B scripts\load_test.py
+  Result: 10/10 HTTP 200; all returned correlation_id=MISSING.
+  GET /metrics after workload:
+    traffic=20
+    latency_p50=504.0 ms; latency_p95=1499.0 ms; latency_p99=1499.0 ms
+    ttft_p95=50.0 ms
+    total_cost_usd=0.0404; tokens_in_total=676; tokens_out_total=2558
+    error_breakdown={}; quality_avg=0.88
+  Log event counts: app_started=1; request_received=20; response_sent=20
+  Retrieval proxy from tool_success in log: 20/20 true
+
+Log validator
+  Command: .\.venv\Scripts\python.exe -B scripts\validate_logs.py
+  Total log records analyzed: 41
+  Records with missing required fields: 40
+  Records with missing enrichment (context): 40
+  Unique correlation IDs found: 0
+  Potential PII leaks detected: 0
+  Estimated Score: 30/100
+  Note: Zero detected PII in these logs does not prove redaction works on PII input.
+
+Dashboard validator
+  Command: .\.venv\Scripts\python.exe -B scripts\validate_dashboard.py
+  HỢP LỆ: 6/6 panel có trong dashboard contract.
+  Note: This checks YAML structure, not a runtime dashboard.
+
+Tests
+  Command: .\.venv\Scripts\python.exe -B -m pytest -q -p no:cacheprovider
+  22 passed in 2.76s
+
+Langfuse verification (read-only API; no credentials printed)
+  GET /api/public/projects: HTTP 200; project=day13-k4-l3a-2A202602457
+  GET /api/public/v2/observations (last 15 minutes): HTTP 200
+  lab_agent_observations=10; unique_lab_agent_traces=10

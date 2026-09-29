@@ -1,0 +1,3 @@
+﻿Lệnh kiểm tra trước commit: .\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
+......................                                                   [100%]
+22 passed in 3.04s

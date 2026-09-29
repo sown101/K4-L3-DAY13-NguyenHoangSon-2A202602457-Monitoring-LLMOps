@@ -1,25 +1,28 @@
 alerts:
-  - name: TODO_alert_1
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: fast_request_slo_breach
+    severity: critical
+    condition: 'count(response_sent where latency_ms <= 3000) / count(request_received) < 0.995 and count(request_received) >= 20'
+    duration: 10m
     type: symptom-based
     channel: slack
-    owner: TODO
-    runbook: docs/alerts.md#alert-1
-  - name: TODO_alert_2
-    severity: TODO
-    condition: TODO
-    duration: TODO
+    slack_channel: '#llmops-alerts'
+    owner: Nguyen Hoang Son (on-call)
+    runbook: docs/alerts.md#alert-1-fast-request-slo-breach
+  - name: user_error_rate_high
+    severity: critical
+    condition: 'count(request_failed) / count(request_received) * 100 > 2 and count(request_received) >= 20'
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
-    runbook: docs/alerts.md#alert-2
-  - name: TODO_alert_3
-    severity: TODO
-    condition: TODO
-    duration: TODO
+    slack_channel: '#llmops-alerts'
+    owner: Nguyen Hoang Son (on-call)
+    runbook: docs/alerts.md#alert-2-user-error-rate-high
+  - name: retrieval_success_low
+    severity: warning
+    condition: 'count(tool_success == true) / count(tool_success != null) * 100 < 90 and count(tool_success != null) >= 20'
+    duration: 10m
     type: symptom-based
     channel: slack
-    owner: TODO
-    runbook: docs/alerts.md#alert-3
+    slack_channel: '#llmops-alerts'
+    owner: Nguyen Hoang Son (on-call)
+    runbook: docs/alerts.md#alert-3-retrieval-success-low
